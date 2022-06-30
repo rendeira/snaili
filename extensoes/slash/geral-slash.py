@@ -18,12 +18,12 @@ class General(commands.Cog, name="geral-slash"):
     )
     async def botinfo(self, interaction: ApplicationCommandInteraction) -> None:
         embed = disnake.Embed(
-            description=f"{nome} {versao}",
+            description=f"{descricao}",
             color=0x9C84EF
         )
 
         embed.set_author(
-            name=f"{descricao}"
+            name=f"{nome} {versao}"
         )
         embed.add_field(
             name="Plataforma",
