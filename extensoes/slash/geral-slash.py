@@ -58,9 +58,12 @@ class General(commands.Cog, name="geral-slash"):
             description=f"{interaction.guild}",
             color=0x9C84EF
         )
-        embed.set_thumbnail(
-            url=interaction.guild.icon.url
-        )
+        try:
+            embed.set_thumbnail(
+                url=interaction.guild.icon.url
+            )
+        except:
+            pass
         embed.add_field(
             name="ID do servidor:",
             value=interaction.guild.id
