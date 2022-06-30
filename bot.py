@@ -12,10 +12,10 @@ from disnake.ext.commands import Context
 from tzlocal import get_localzone_name
 
 from classes import contas
-
 # Apenas ative isso se o bot estiver rodando localmente
 # from dotenv import load_dotenv
 # load_dotenv()
+from complemento import nome, versao
 
 tempo_inicial = time.time()
 intents = disnake.Intents.default()
@@ -50,6 +50,7 @@ bot.config = os.environ
 @bot.event
 async def on_ready() -> None:
     print("===========================")
+    print(f"{nome} {versao}")
     print(f"[i] Executando o programa no {platform.system()} {platform.release()} ({os.name})")
     print(f"[i] Logado no Discord como {bot.user.name}")
     print(f"[i] Disnake {disnake.__version__}")
@@ -77,7 +78,6 @@ async def on_ready() -> None:
     print("===========================")
 
 
-
 @tasks.loop(minutes=10.0)
 async def registred_task() -> None:
     try:
@@ -96,7 +96,7 @@ async def registred_task() -> None:
         message = await channel.fetch_message(int(os.environ['users-message-id']))
         await message.edit(embed=embed)
     except:
-        print("Algo deu errado ao pegar a lista de usuários")
+        print("[i] Algo deu errado ao pegar a lista de usuários.")
 
 
 @tasks.loop(minutes=1.0)
@@ -108,7 +108,7 @@ async def status_task() -> None:
     seconds = uptime
     tempo = f"{f'{round(hours)} h' if round(hours) > 0 else ''} {f'{round(minutes)} min' if round(minutes) > 0 and round(hours) <= 0 else ''} {f'{round(seconds)} s' if round(seconds) > 0 and round(minutes) <= 0 and round(hours) <= 0 else ''}"
     await channel.edit(name=f"Bot ativo por {tempo}")
-    print(f"Bot ativo por {tempo} (Tempo em segundos: {uptime})")
+    print(f"[i] Bot ativo por {tempo} (Tempo em segundos: {uptime})")
     statuses = ["Minecraft"]
     await bot.change_presence(activity=disnake.Game(random.choice(statuses)))
 
@@ -119,10 +119,10 @@ def load_commands(command_type: str) -> None:
             extension = file[:-3]
             try:
                 bot.load_extension(f"extensoes.{command_type}.{extension}")
-                print(f"Extensao carregada '{extension}'")
+                print(f"[i] Extensao carregada '{extension}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
-                print(f"Falha ao carregar extensao {extension}\n{exception}")
+                print(f"[!] Falha ao carregar extensao {extension}\n{exception}")
 
 
 if __name__ == "__main__":
@@ -174,7 +174,7 @@ async def on_command_completion(context: Context) -> None:
     split = full_command_name.split(" ")
     executed_command = str(split[0])
     print(
-        f"Comando {executed_command} em {context.guild.name} executado com sucesso (ID: {context.message.guild.id}) por {context.message.author} (ID: {context.message.author.id})")
+        f"[i] Comando {executed_command} em {context.guild.name} executado com sucesso (ID: {context.message.guild.id}) por {context.message.author} (ID: {context.message.author.id})")
 
 
 @bot.event

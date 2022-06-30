@@ -5,6 +5,8 @@ import disnake
 from disnake import ApplicationCommandInteraction
 from disnake.ext import commands
 
+from complemento import versao, nome, url, descricao
+
 
 class General(commands.Cog, name="geral-slash"):
     def __init__(self, bot):
@@ -12,15 +14,16 @@ class General(commands.Cog, name="geral-slash"):
 
     @commands.slash_command(
         name="botinfo",
-        description="Informações sobre o bot",
+        description="Informações sobre o bot.",
     )
     async def botinfo(self, interaction: ApplicationCommandInteraction) -> None:
         embed = disnake.Embed(
-            description="angel 1.0",
+            description=f"{nome} {versao}",
             color=0x9C84EF
         )
         embed.set_author(
-            name="Informação do bot"
+            name="Informação do bot",
+            value=f"{descricao}"
         )
         embed.add_field(
             name="Plataforma",
@@ -29,24 +32,19 @@ class General(commands.Cog, name="geral-slash"):
         )
         embed.add_field(
             name="Prefixo:",
-            value=f"/ (Slash)",
+            value=f"/ (Slash) ou {os.environ['prefix']}",
             inline=False
         )
         embed.add_field(
             name="Site oficial",
-            value="https://graye.herokuapp.com/",
-            inline=False
-        )
-        embed.add_field(
-            name="Outras informações",
-            value=f"O bot só está dísponível em Português e também só há comandos de Slash",
+            value=f"{url}",
             inline=False
         )
         await interaction.send(embed=embed)
 
     @commands.slash_command(
         name="serverinfo",
-        description="Informação sobre o servidor.",
+        description="Informações sobre o servidor.",
     )
     async def serverinfo(self, interaction: ApplicationCommandInteraction) -> None:
         roles = [role.name for role in interaction.guild.roles]
@@ -86,7 +84,7 @@ class General(commands.Cog, name="geral-slash"):
 
     @commands.slash_command(
         name="ping",
-        description="Verificar se o bot ainda tá vivo.",
+        description="Verifica se o bot ainda está vivo.",
     )
     async def ping(self, interaction: ApplicationCommandInteraction) -> None:
         embed = disnake.Embed(

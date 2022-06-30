@@ -15,7 +15,7 @@ def login():
                                                  os.environ["ms-admin-pass"])
     global client
     client = GraphClient(credential=pass_credential)
-    print(f"Logado como {get('/me')['userPrincipalName']}")
+    print(f"[i] Logado como {get('/me')['userPrincipalName']}")
 
 
 def random_password() -> string:
@@ -26,8 +26,7 @@ def get_accounts() -> string:
     values = get('/users')
     str = ''
     for item in values['value']:
-        if (not item['displayName'] == 'optt yawncat') and (not item['displayName'] == 'god'):
-            str = str + "\n" + "- " + (item['displayName']).lower() + ";"
+        str = str + "\n" + "- " + (item['displayName']).lower() + ";"
     return str
 
 

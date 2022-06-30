@@ -18,7 +18,7 @@ class usuarios(commands.Cog, name="usuarios-slash"):
         options=[
             Option(
                 name="nome",
-                description="nome do usuário",
+                description="Nome do usuário",
                 type=OptionType.string,
                 required=False
             )
@@ -38,16 +38,19 @@ class usuarios(commands.Cog, name="usuarios-slash"):
         if ("Peixe") in roles_user_has:
             password = contas.random_password()
             await interaction.response.send_message("Criando usuário...", ephemeral=True)
-            user = '{ "accountEnabled": true, "displayName": "' + nome + '", "mailNickname": "' + nome + '","userPrincipalName": "' + nome + \
-                   os.environ[
-                       "ms-email"] + '", "passwordProfile": { "forceChangePasswordNextSignIn": true, "password": "' + password + '" }}'
+            user = '{ "accountEnabled": true, "displayName": "' + nome + \
+                   '", "mailNickname": "' + nome + '","userPrincipalName": "' + nome + \
+                   os.environ["ms-email"] + '", ' \
+                                            '"passwordProfile": { "forceChangePasswordNextSignIn": true, "password": "' \
+                   + password + '" }}'
             response = contas.client.post("/users", json=json.loads(user))
             json_data = response.json()
             if 'error' in json_data:
                 error = json_data['error']
                 await interaction.edit_original_message("Erro: " + error['message'])
             else:
-                await interaction.author.remove_roles(disnake.utils.get(interaction.author.guild.roles, name="Peixe"))
+                await interaction.author.remove_roles(
+                    disnake.utils.get(interaction.author.guild.roles, name="Peixe"))
                 embed = disnake.Embed(
                     description=f"{nome}",
                     color=0x9C84EF,
@@ -57,7 +60,7 @@ class usuarios(commands.Cog, name="usuarios-slash"):
                 )
                 embed.add_field(
                     name="Email",
-                    value=f"{nome}@sexosexo.onmicrosoft.com",
+                    value=f"{nome}{os.environ['ms-email']}",
                     inline=False
                 )
                 embed.add_field(
@@ -68,7 +71,8 @@ class usuarios(commands.Cog, name="usuarios-slash"):
                 await interaction.edit_original_message("Usuário criado com sucesso!", embed=embed)
         else:
             await interaction.response.send_message(
-                "Você não tem o cargo necessário para completar a ação. \nLembre-se: para evitar spam, você só pode pedir uma conta uma vez",
+                "Você não tem o cargo necessário para completar a ação. "
+                "\nLembre-se: para evitar spam, você só pode pedir uma conta uma vez",
                 ephemeral=True)
 
 

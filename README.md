@@ -8,4 +8,5 @@ Python 3.10.5
 
 ## Licença
 
-Este projeto está sob licença do MIT, ou seja, é permitido reutilizar o código, modificar, copiar o programa e distribui-lo mesmo sem permissão.
+Este projeto está sob licença do MIT, ou seja, é permitido reutilizar o código, modificar, copiar o programa e
+distribui-lo mesmo sem permissão.
