@@ -103,7 +103,7 @@ async def registred_task() -> None:
     try:
         now = datetime.now()
         tempo = now.strftime("%d/%m/%Y %H:%M:%S")
-
+        guild = bot.get_guild(int(os.environ['guild-id']))
         embed = disnake.Embed(
             title="Usuários cadastrados",
             description="Aqui contém uma lista dos usuários que foram cadastrados dentro do bot \n" + contas.get_accounts(),
@@ -112,7 +112,7 @@ async def registred_task() -> None:
         embed.set_footer(
             text="\nAtualizado em " + tempo + " (Fuso horário: " + get_localzone_name() + ")"
         )
-        channel = bot.get_channel(int(os.environ['text-channel-id']))
+        channel = guild.get_channel(int(os.environ['text-channel-id']))
         message = await channel.fetch_message(int(os.environ['users-message-id']))
         await message.edit(embed=embed)
     except:
@@ -229,5 +229,4 @@ async def on_command_error(context: Context, error) -> None:
     raise error
 
 
-# Rode o comando
 bot.run(os.environ["token"])
