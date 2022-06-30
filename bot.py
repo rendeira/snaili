@@ -12,9 +12,29 @@ from disnake.ext.commands import Context
 from tzlocal import get_localzone_name
 
 from classes import contas
-# Apenas ative isso se o bot estiver rodando localmente
-# from dotenv import load_dotenv
+
+"""
+Apenas ative isso se o bot estiver rodando localmente
+
+Template do arquivo .env:
+
+token=token_do_discord
+prefix=/
+text-channel-id=914152523523512604
+users-message-id=23523562673737712
+voice-channel-id=8584726352352510
+guild-id=991014224975257670
+ms-email=@gmail.com
+ms-client-id=13214214-43242ji432-324-4323
+ms-admin-email=admin@microsoft.com
+ms-admin-password=1234slaoq
+
+Código:
+
+from dotenv import load_dotenv
 # load_dotenv()
+"""
+
 from complemento import nome, versao
 
 tempo_inicial = time.time()
