@@ -1,6 +1,5 @@
 import os
 import platform
-import random
 import time
 from datetime import datetime
 
@@ -76,6 +75,7 @@ async def on_ready() -> None:
     print(f"[i] Disnake {disnake.__version__}")
     print(f"[i] Python {platform.python_version()}")
     print(f"[i] Rodando no {platform.system()} {platform.release()} ({os.name})")
+    guild = bot.get_guild(int(os.environ['guild-id']))
     status_task.start()
     print(f"[i] Logando no M$")
     try:
@@ -83,7 +83,7 @@ async def on_ready() -> None:
     except:
         print("[!] Houve um erro ao fazer o login na conta da M$")
         try:
-            channel = bot.get_channel(int(os.environ['text-channel-id']))
+            channel = guild.get_channel(int(os.environ['text-channel-id']))
             message = await channel.fetch_message(int(os.environ['users-message-id']))
             embed = disnake.Embed(
                 title="Não foi possível gerar a lista de usuários nesse momento",
@@ -121,7 +121,8 @@ async def registred_task() -> None:
 
 @tasks.loop(minutes=1.0)
 async def status_task() -> None:
-    channel = bot.get_channel(int(os.environ['voice-channel-id']))
+    guild = bot.get_guild(int(os.environ['guild-id']))
+    channel = guild.get_channel(int(os.environ['voice-channel-id']))
     uptime = time.time() - tempo_inicial
     hours = uptime / 60 / 60
     minutes = uptime / 60
