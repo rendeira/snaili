@@ -1,4 +1,4 @@
-nome = 'gray'
+nome = 'graye'
 versao = '1.0 beta'
 url = 'https://graye.herokuapp.com/'
 autor = 'rendeira'
