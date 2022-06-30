@@ -109,8 +109,7 @@ async def status_task() -> None:
     tempo = f"{f'{round(hours)} h' if round(hours) > 0 else ''} {f'{round(minutes)} min' if round(minutes) > 0 and round(hours) <= 0 else ''} {f'{round(seconds)} s' if round(seconds) > 0 and round(minutes) <= 0 and round(hours) <= 0 else ''}"
     await channel.edit(name=f"Bot ativo por {tempo}")
     print(f"[i] Bot ativo por {tempo} (Tempo em segundos: {uptime})")
-    statuses = ["Minecraft"]
-    await bot.change_presence(activity=disnake.Game(random.choice(statuses)))
+    await bot.change_presence(activity=disnake.Game(f"{nome} {versao}"))
 
 
 def load_commands(command_type: str) -> None:
@@ -145,7 +144,7 @@ async def on_member_join(person):
 @bot.event
 async def on_slash_command(interaction: ApplicationCommandInteraction) -> None:
     print(
-        f"Comando {interaction.data.name} em {interaction.guild.name} executado com sucesso (ID: {interaction.guild.id}) por {interaction.author} (ID: {interaction.author.id})")
+        f"[i] Comando {interaction.data.name} em {interaction.guild.name} executado com sucesso (ID: {interaction.guild.id}) por {interaction.author} (ID: {interaction.author.id})")
 
 
 @bot.event
