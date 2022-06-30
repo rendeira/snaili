@@ -21,9 +21,9 @@ class General(commands.Cog, name="geral-slash"):
             description=f"{nome} {versao}",
             color=0x9C84EF
         )
+
         embed.set_author(
-            name="Informação do bot",
-            value=f"{descricao}"
+            name=f"{descricao}"
         )
         embed.add_field(
             name="Plataforma",
