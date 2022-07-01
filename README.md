@@ -1,12 +1,5 @@
 # gray
 
-Esse é mais um bot ordinário do Discord, está em português todas as suas funções
+Esse é mais um bot qualquer administrativo do Discord feito em Python 3.10.5, está em português todas as suas funções
 
-## Versão do Python utilizada
-
-Python 3.10.5
-
-## Licença
-
-Este projeto está sob licença do MIT, ou seja, é permitido reutilizar o código, modificar, copiar o programa e
-distribui-lo mesmo sem permissão.
+[Adicione ao seu servidor!](https://discord.com/api/oauth2/authorize?client_id=991024504853631036&permissions=8&scope=bot+applications.commands)
