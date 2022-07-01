@@ -8,7 +8,7 @@
 </body>
 </html>
 <?php
-echo 'Loading info, please wait';
+echo 'Loading info, please wait.';
 $code = "'print(nome + \" by \" + autor + \"\\n\" + descricao)'";
 $cmd = "python complemento.py -c " . $code;
 $result = exec($cmd);
