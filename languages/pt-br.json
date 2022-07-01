@@ -1,6 +1,7 @@
 {
   "info-icon": "[i]",
   "alert-icon": "[!]",
+  "separator": "==========================",
   "cmd-create": "criar",
   "cmd-create-desc": "Comando so pode ser usado uma vez",
   "cmd-name-": "nome",
