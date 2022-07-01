@@ -7,16 +7,15 @@ import disnake
 from disnake import ApplicationCommandInteraction
 from disnake.ext import tasks, commands
 from disnake.ext.commands import Bot
-from disnake.ext.commands import Context
 from tzlocal import get_localzone_name
-from classes.linguagem import lang
+
 from classes import contas
+from classes.linguagem import lang
 
 """
-Apenas ative isso se o bot estiver rodando localmente
+.env template
 
-Template do arquivo .env:
-language=pt-br
+language=en
 token=token_do_discord
 prefix=/
 text-channel-id=914152523523512604
@@ -39,7 +38,6 @@ from complemento import nome, versao
 
 tempo_inicial = time.time()
 intents = disnake.Intents.default()
-
 
 intents.bans = True
 intents.dm_messages = True
@@ -78,7 +76,7 @@ async def on_ready() -> None:
     print(f"{lang['info-icon']} Python {platform.python_version()}")
     guild = bot.get_guild(int(os.environ['guild-id']))
     status_task.start()
-    if os.environ['ms-login'] == 'SIM':
+    if guild is not None:
         print(f"{lang['info-icon']} {lang['login-ms']}")
         try:
             contas.login()
@@ -181,5 +179,6 @@ async def on_slash_command_error(interaction: ApplicationCommandInteraction, err
             color=0xE02B2B
         )
         return await interaction.send(embed=embed, ephemeral=True)
+
 
 bot.run(os.environ["token"])

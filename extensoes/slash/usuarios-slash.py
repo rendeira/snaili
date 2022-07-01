@@ -8,6 +8,7 @@ from disnake.ext import commands
 from classes import contas
 from classes.linguagem import lang
 
+
 class usuarios(commands.Cog, name="usuarios-slash"):
     def __init__(self, bot):
         self.bot = bot
