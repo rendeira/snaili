@@ -5,8 +5,11 @@
     <title>gray</title>
 </head>
 <body>
-gray
 </body>
 </html>
 <?php
+$code = "'print(nome + \" by \" + autor + \"\\n\" + descricao)'";
+$cmd = "python complemento.py -c " . $code;
+$result = exec($cmd);
+echo $result;
 ?>
