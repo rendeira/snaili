@@ -38,6 +38,8 @@ from complemento import nome, versao
 
 tempo_inicial = time.time()
 intents = disnake.Intents.default()
+# Função da Microsoft, ative se não precisa
+
 
 intents.bans = True
 intents.dm_messages = True
@@ -77,24 +79,25 @@ async def on_ready() -> None:
     print(f"[i] Rodando no {platform.system()} {platform.release()} ({os.name})")
     guild = bot.get_guild(int(os.environ['guild-id']))
     status_task.start()
-    print(f"[i] Logando no M$")
-    try:
-        contas.login()
-    except:
-        print("[!] Houve um erro ao fazer o login na conta da M$")
+    if os.environ['ms-login'] == 'SIM':
+        print(f"[i] Logando no M$")
         try:
-            channel = guild.get_channel(int(os.environ['text-channel-id']))
-            message = await channel.fetch_message(int(os.environ['users-message-id']))
-            embed = disnake.Embed(
-                title="Não foi possível gerar a lista de usuários nesse momento",
-                description="As crendenciais são inválidas ou os servidores estão offline, por favor contacte o adminstrador.",
-                color=0x9C84EF,
-            )
-            await message.edit(embed=embed)
+            contas.login()
         except:
-            pass
-    else:
-        registred_task.start()
+            print("[!] Houve um erro ao fazer o login na conta da M$")
+            try:
+                channel = guild.get_channel(int(os.environ['text-channel-id']))
+                message = await channel.fetch_message(int(os.environ['users-message-id']))
+                embed = disnake.Embed(
+                    title="Não foi possível gerar a lista de usuários nesse momento",
+                    description="As crendenciais são inválidas ou os servidores estão offline, por favor contacte o adminstrador.",
+                    color=0x9C84EF,
+                )
+                await message.edit(embed=embed)
+            except:
+                pass
+        else:
+            registred_task.start()
     print("===========================")
 
 
