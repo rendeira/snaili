@@ -6,6 +6,8 @@ import string
 from azure.identity import UsernamePasswordCredential
 from msgraph.core import GraphClient
 
+from classes.linguagem import lang
+
 client: GraphClient
 alphabet = string.ascii_letters + string.digits + "-*!@#$%><.,+"
 

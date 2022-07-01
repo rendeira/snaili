@@ -9,8 +9,6 @@ from disnake.ext import tasks, commands
 from disnake.ext.commands import Bot
 from tzlocal import get_localzone_name
 
-
-
 """
 .env template
 
@@ -82,8 +80,8 @@ async def on_ready() -> None:
         print(f"{lang['info-icon']} {lang['login-ms']}")
         try:
             contas.login()
-        except:
-            print(f"{lang['alert-icon']} {lang['there-was-an-error-ms']}")
+        except Exception as e:
+            print(f"{lang['alert-icon']} {lang['there-was-an-error-ms']} ({e})")
             try:
                 channel = guild.get_channel(int(os.environ['text-channel-id']))
                 message = await channel.fetch_message(int(os.environ['users-message-id']))

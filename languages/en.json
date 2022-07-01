@@ -12,7 +12,7 @@
   "temp-pass": "Temporary password",
   "user-created": "User created with success",
   "ms-role-error": "You do not have the required title to complete the action. Remember: to avoid spam, you can only request an account once",
-    "running-as": "Running on",
+  "running-as": "Running on",
   "logged-dc": "Logged on Discord as",
   "login-ms": "Logging on M$",
   "there-was-an-error-ms": "M$ login failed",
