@@ -11,7 +11,7 @@
 echo 'Loading info, please wait.';
 $code = "'print(nome + \" by \" + autor + \"\\n\" + descricao)'";
 $cmd = "python complemento.py -c " . $code;
-$result = exec($cmd);
-print_r($result);
-echo $result;
+exec($cmd,$output, $return_var);
+print_r($output);
+echo "Informações do bot\n".$output;
 ?>
