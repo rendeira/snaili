@@ -11,6 +11,6 @@
 echo '...';
 $code = "'print(nome + \" by \" + autor + \"\\n\" + descricao)'";
 $cmd = "python complemento.py -c " . $code;
-shell_exec($cmd,$output, $return_var);
+$output = shell_exec($cmd);
 echo "<h1>Informações do bot</h1>\n".$output;
 ?>
