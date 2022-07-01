@@ -38,7 +38,6 @@ from complemento import nome, versao
 
 tempo_inicial = time.time()
 intents = disnake.Intents.default()
-# Função da Microsoft, ative se não precisa
 
 
 intents.bans = True
