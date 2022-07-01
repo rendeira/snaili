@@ -1,4 +1,4 @@
-# gray
+# snaili
 
 Esse é mais um bot qualquer administrativo do Discord feito em Python 3.10.5, está em português todas as suas funções
 

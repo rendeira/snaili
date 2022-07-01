@@ -1,5 +1,5 @@
-nome = 'graye'
+nome = 'snaili'
 versao = '1.0'
-url = 'https://graye.herokuapp.com/'
+url = 'https://snaili.herokuapp.com/'
 autor = 'rendeira'
 descricao = 'Um bot de Discord em português qualquer, feito em Python'
