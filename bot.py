@@ -9,8 +9,7 @@ from disnake.ext import tasks, commands
 from disnake.ext.commands import Bot
 from tzlocal import get_localzone_name
 
-from classes import contas
-from classes.linguagem import lang
+
 
 """
 .env template
@@ -28,11 +27,14 @@ ms-client-id=13214214-43242ji432-324-4323
 ms-admin-email=admin@microsoft.com
 ms-admin-password=1234slaoq
 
-Código:
+Code:
 
 from dotenv import load_dotenv
 # load_dotenv()
 """
+
+from classes import contas
+from classes.linguagem import lang
 
 from complemento import nome, versao
 
@@ -81,7 +83,7 @@ async def on_ready() -> None:
         try:
             contas.login()
         except:
-            print(f"{lang['error-icon']} {lang['there-was-an-error-ms']}")
+            print(f"{lang['alert-icon']} {lang['there-was-an-error-ms']}")
             try:
                 channel = guild.get_channel(int(os.environ['text-channel-id']))
                 message = await channel.fetch_message(int(os.environ['users-message-id']))

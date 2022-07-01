@@ -20,7 +20,7 @@ class usuarios(commands.Cog, name="usuarios-slash"):
             Option(
 
                 name=lang['cmd-name'],
-                description=lang['cmd_name-desc'],
+                description=lang['cmd-name-desc'],
                 type=OptionType.string,
                 required=False
             )

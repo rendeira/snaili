@@ -4,7 +4,7 @@
   "separator": "==========================",
   "cmd-create": "create-user",
   "cmd-create-desc": "This command create M$ accounts",
-  "cmd-name-": "username",
+  "cmd-name": "username",
   "cmd-name-desc": "Username to create the user",
   "guild-error": "Unavailable command",
   "ms-role": "Peixe",
@@ -32,4 +32,5 @@
   "by": "by",
   "error": "Error!",
   "missing-permissions": "Missing permissions",
+  "logged-as": "Logged as"
 }

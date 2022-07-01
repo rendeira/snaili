@@ -15,7 +15,7 @@ def login():
                                                  os.environ["ms-admin-pass"])
     global client
     client = GraphClient(credential=pass_credential)
-    print(f"[i] Logado como {get('/me')['userPrincipalName']}")
+    print(f"{lang['info-icon']} {lang['logged-as']} {get('/me')['userPrincipalName']}")
 
 
 def random_password() -> string:
