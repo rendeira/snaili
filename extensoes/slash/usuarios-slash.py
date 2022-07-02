@@ -19,14 +19,14 @@ class usuarios(commands.Cog, name="usuarios-slash"):
         options=[
             Option(
 
-                name=lang['cmd-name'],
+                name='name',
                 description=lang['cmd-name-desc'],
                 type=OptionType.string,
                 required=False
             )
         ]
     )
-    async def criar(self, interaction: ApplicationCommandInteraction, nome: str):
+    async def criar(self, interaction: ApplicationCommandInteraction, name: str):
         """
         Cria um usuário
         """
@@ -40,8 +40,8 @@ class usuarios(commands.Cog, name="usuarios-slash"):
         if lang['ms-role'] in roles_user_has:
             password = contas.random_password()
             await interaction.response.send_message(lang['creating-user'], ephemeral=True)
-            user = '{ "accountEnabled": true, "displayName": "' + nome + \
-                   '", "mailNickname": "' + nome + '","userPrincipalName": "' + nome + \
+            user = '{ "accountEnabled": true, "displayName": "' + name + \
+                   '", "mailNickname": "' + name + '","userPrincipalName": "' + name + \
                    os.environ["ms-email"] + '", ' \
                                             '"passwordProfile": { "forceChangePasswordNextSignIn": true, "password": "' \
                    + password + '" }}'
@@ -54,7 +54,7 @@ class usuarios(commands.Cog, name="usuarios-slash"):
                 await interaction.author.remove_roles(
                     disnake.utils.get(interaction.author.guild.roles, name=lang['ms-role']))
                 embed = disnake.Embed(
-                    description=f"{nome}",
+                    description=f"{name}",
                     color=0x9C84EF,
                 )
                 embed.set_author(
@@ -62,7 +62,7 @@ class usuarios(commands.Cog, name="usuarios-slash"):
                 )
                 embed.add_field(
                     name="Email",
-                    value=f"{nome}{os.environ['ms-email']}",
+                    value=f"{name}{os.environ['ms-email']}",
                     inline=False
                 )
                 embed.add_field(

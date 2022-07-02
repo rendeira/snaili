@@ -1,5 +1,5 @@
 nome = 'snaili'
-versao = '1.1'
+versao = '1.1.1'
 url = 'https://snaili.herokuapp.com/'
 autor = 'rendeira'
-descricao = 'Multiple languages Discord bot'
+descricao = 'Discord bot'
